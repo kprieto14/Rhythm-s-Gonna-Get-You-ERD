@@ -1,4 +1,4 @@
-CREATE TABLE "Bands"(
+CREATE TABLE "Artists"(
     "Id" SERIAL PRIMARY KEY,
     "Name" TEXT NOT NULL,
     "CountryOfOrigin" TEXT,
@@ -24,9 +24,9 @@ CREATE TABLE "Songs"(
     "Duration" TEXT
     );
 
-ALTER TABLE "Bands" ADD COLUMN "AlbumId" INTEGER NULL REFERENCES "Albums" ("Id");
+ALTER TABLE "Songs" ADD COLUMN "AlbumId" INTEGER NULL REFERENCES "Albums" ("Id");
 
-ALTER TABLE "Albums" ADD COLUMN "SongId" INTEGER NULL REFERENCES "Songs" ("Id");
+ALTER TABLE "Albums" ADD COLUMN "ArtistId" INTEGER NULL REFERENCES "Artists" ("Id");
 
 INSERT INTO "Bands" ("Name", "CountryOfOrigin", "NumberOfMembers", "Website", "Style", "IsSigned", "ContactName", "ContactPhoneNumber")
 VALUES ('NSYNC', 'USA', '5', 'https://nsynconline.com', 'Pop', 'FALSE', 'Christine', '555-867-5309');
