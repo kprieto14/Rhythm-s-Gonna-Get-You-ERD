@@ -28,16 +28,16 @@ ALTER TABLE "Songs" ADD COLUMN "AlbumId" INTEGER NULL REFERENCES "Albums" ("Id")
 
 ALTER TABLE "Albums" ADD COLUMN "ArtistId" INTEGER NULL REFERENCES "Artists" ("Id");
 
-INSERT INTO "Bands" ("Name", "CountryOfOrigin", "NumberOfMembers", "Website", "Style", "IsSigned", "ContactName", "ContactPhoneNumber")
+INSERT INTO "Artists" ("Name", "CountryOfOrigin", "NumberOfMembers", "Website", "Style", "IsSigned", "ContactName", "ContactPhoneNumber")
 VALUES ('NSYNC', 'USA', '5', 'https://nsynconline.com', 'Pop', 'FALSE', 'Christine', '555-867-5309');
 
 SELECT * 
-FROM "Bands";
+FROM "Artists";
 
-INSERT INTO "Albums" ("Title", "IsExplicit", "ReleaseDate")
+INSERT INTO "Artists" ("Title", "IsExplicit", "ReleaseDate")
 VALUES ('N Sync', 'FALSE', '03/24/1998');
 
-UPDATE "Bands" SET "AlbumId" = 1 WHERE "Id" IN (1);
+UPDATE "Artists" SET "AlbumId" = 1 WHERE "Id" IN (1);
 
 INSERT INTO "Songs" ("TrackNumber", "Title", "Duration")
 VALUES ('1', "Tearin' Up My Heart", '4:47');
@@ -46,16 +46,16 @@ UPDATE "Albums"
 SET "SongId" = 1 
 WHERE "Id" IN (1);
 
-UPDATE "Bands" 
+UPDATE "Artists" 
 SET "IsSigned" = TRUE 
 WHERE "Name" = "NSYNC";
 
-UPDATE "Bands" 
+UPDATE "Artists" 
 SET "IsSigned" = FALSE 
 WHERE "Name" = 'NSYNC';
 
-SELECT "Bands"."Name" 
-FROM "Bands" 
+SELECT "Artists"."Name" 
+FROM "Artists" 
 JOIN "Albums" ON "Bands"."AlbumId" = "Albums"."Id";
 
 SELECT "Albums"."Title"
@@ -64,9 +64,9 @@ JOIN "Songs" ON "Albums"."SongId" = "Songs"."Id"
 ORDER BY "ReleaseDate";
 
 SELECT * 
-FROM "Bands" 
+FROM "Artists" 
 WHERE "IsSigned" = TRUE;
 
 SELECT * 
-FROM "Bands" 
+FROM "Artists" 
 WHERE "IsSigned" = FALSE;
